@@ -142,7 +142,7 @@ def cmaes(
         sigma = sigma * np.exp((cs / damps) * (np.linalg.norm(ps) / chiN - 1))
 
         # Update B and D from C
-        if counteval - eigenval > lambda_ / (c1 + cmu) / N / 10:  # still O(N^3), O(N^2) decomposition every N/constant populations instead of N doesn't change the overall worst-case complexity
+        if counteval - eigenval > lambda_ / (c1 + cmu) / N / 10:
             eigenval = counteval
             C = np.triu(C) + np.triu(C, k=1).T  # enforce symmetry
             D, B = np.linalg.eigh(C)  # eigen decomposition, B == normalized eigenvectors
